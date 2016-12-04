@@ -2,7 +2,9 @@ package com.capgemini.billingservice;
 
 import com.capgemini.billingservice.exception.MenuItemNotFoundException;
 import com.capgemini.billingservice.menu.Menu;
+import com.capgemini.billingservice.util.Calculator;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 import static com.capgemini.billingservice.util.MenuUtils.DECIMAL_FORMATTER;
@@ -28,8 +30,8 @@ public class Main {
             Double total = menu.calculateTotalOf(purchases);
             System.out.println("Total: £" + DECIMAL_FORMATTER.format(total));
             Double serviceCharge = menu.calculateServiceCharges(purchases);
-            Double serviceCharges = serviceCharge != 0.0D ? total * serviceCharge : 0.0D;
-            System.out.println("Service Charges: £" + DECIMAL_FORMATTER.format(serviceCharges));
+            BigDecimal serviceCharges = Calculator.calculateTotalServiceChargesToDecimalPlaces(total, serviceCharge, 2);
+            System.out.println("Service Charges: £" + serviceCharges);
         } catch (MenuItemNotFoundException e){
             System.err.println("Unable to calculate purchase total, reason: " + e.getMessage());
         }

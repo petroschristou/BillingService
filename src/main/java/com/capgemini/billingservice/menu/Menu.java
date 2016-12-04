@@ -6,9 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.capgemini.billingservice.util.MenuUtils.DECIMAL_FORMATTER;
-import static com.capgemini.billingservice.util.MenuUtils.SERVICE_CHARGE_FOOD;
-import static com.capgemini.billingservice.util.MenuUtils.SERVICE_CHARGE_HOT_FOOD;
+import static com.capgemini.billingservice.util.MenuUtils.*;
 
 /**
  * Created by Petros Christou on 03/12/16.
@@ -77,4 +75,5 @@ public class Menu {
         }
         return serviceCharge;
     }
+
 }
