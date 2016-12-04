@@ -3,7 +3,7 @@ package com.capgemini.billingservice.menu;
 import org.testng.Assert;
 
 /**
- * Created by Petros Christou on 04/12/16.
+ * Created by Petros Christou on 03/12/16.
  */
 public class MenuItem {
     private final String name;
