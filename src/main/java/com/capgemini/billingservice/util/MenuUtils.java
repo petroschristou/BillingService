@@ -9,6 +9,8 @@ public class MenuUtils {
     // These fields should be stored in a database to modify configuration without needing re-releasing code
     public static final DecimalFormat DECIMAL_FORMATTER = new DecimalFormat("0.00");
 
-    public static final Double SERVICE_CHARGE = 0.10D;
+    public static final Double SERVICE_CHARGE_FOOD = 0.10D;
+
+    public static final Double SERVICE_CHARGE_HOT_FOOD = 0.20D;
 
 }

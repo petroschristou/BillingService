@@ -7,7 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.capgemini.billingservice.util.MenuUtils.DECIMAL_FORMATTER;
-import static com.capgemini.billingservice.util.MenuUtils.SERVICE_CHARGE;
+import static com.capgemini.billingservice.util.MenuUtils.SERVICE_CHARGE_FOOD;
+import static com.capgemini.billingservice.util.MenuUtils.SERVICE_CHARGE_HOT_FOOD;
 
 /**
  * Created by Petros Christou on 03/12/16.
@@ -64,18 +65,16 @@ public class Menu {
     }
 
     public Double calculateServiceCharges(String[] purchases) throws MenuItemNotFoundException {
-        Double serviceCharges = 0D;
-        // Used traditional for loop here as lamda expressions need final automatic variables and I didn't want to set the total at a class level.
+        Double serviceCharge = 0.0D;
         for(String purchase : purchases){
             MenuItem item = menu.get(purchase);
-            if(item == null) {
-                throw new MenuItemNotFoundException("Unable to find menu item with key reference: " + purchase);
+            if(item.getType() == MenuItemType.HotFood) {
+                return SERVICE_CHARGE_HOT_FOOD; // Send this straight back as the highest charge
             }
-            if(item.getType() == MenuItemType.HotFood || item.getType() == MenuItemType.ColdFood) {
-                serviceCharges = serviceCharges + (item.getPrice() * SERVICE_CHARGE);
+            if(item.getType() == MenuItemType.ColdFood) {
+                serviceCharge = SERVICE_CHARGE_FOOD; // Keep this in case while iterating there may be hot food purchased
             }
         }
-        return serviceCharges;
+        return serviceCharge;
     }
-
 }

@@ -44,7 +44,7 @@ public class MenuTest {
     }
 
     @Test
-    public void testCalculateServiceChargesOfValidPurchase() throws Exception {
+    public void testCalculateServiceChargesOfPurchaseContainingColdFood() throws Exception {
         Menu testMenu = new Menu();
         testMenu.init();
 
@@ -52,19 +52,32 @@ public class MenuTest {
         String[] testPurchases = {"3"};
         Double serviceCharges = testMenu.calculateServiceCharges(testPurchases);
 
-        Assert.assertEquals(serviceCharges, 0.2D);
+        Assert.assertEquals(serviceCharges, 0.1D);
     }
 
     @Test
-    public void testCalculateServiceChargesOfValidPurchases() throws Exception {
+    public void testCalculateServiceChargesOfPurchaseWithoutFood() throws Exception {
         Menu testMenu = new Menu();
         testMenu.init();
 
         // Test on cold food and hot food - in this instance a cheese sandwich & steak sandwich
-        String[] testPurchases = {"3", "4"};
+        String[] testPurchases = {"1", "2"};
         Double serviceCharges = testMenu.calculateServiceCharges(testPurchases);
 
-        Assert.assertEquals(serviceCharges, 0.65D);
+        Assert.assertEquals(serviceCharges, 0.0D);
     }
+
+    @Test
+    public void testCalculateServiceChargesOfPurchaseContainingHotFood() throws Exception {
+        Menu testMenu = new Menu();
+        testMenu.init();
+
+        // Test on cold food - in this instance a cheese sandwich
+        String[] testPurchases = {"4"};
+        Double serviceCharges = testMenu.calculateServiceCharges(testPurchases);
+
+        Assert.assertEquals(serviceCharges, 0.2D);
+    }
+
 
 }

@@ -27,7 +27,8 @@ public class Main {
         try {
             Double total = menu.calculateTotalOf(purchases);
             System.out.println("Total: £" + DECIMAL_FORMATTER.format(total));
-            Double serviceCharges = menu.calculateServiceCharges(purchases);
+            Double serviceCharge = menu.calculateServiceCharges(purchases);
+            Double serviceCharges = serviceCharge != 0.0D ? total * serviceCharge : 0.0D;
             System.out.println("Service Charges: £" + DECIMAL_FORMATTER.format(serviceCharges));
         } catch (MenuItemNotFoundException e){
             System.err.println("Unable to calculate purchase total, reason: " + e.getMessage());
