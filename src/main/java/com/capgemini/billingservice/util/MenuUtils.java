@@ -13,4 +13,6 @@ public class MenuUtils {
 
     public static final Double SERVICE_CHARGE_HOT_FOOD = 0.20D;
 
+    public static final Double MAX_SERVICE_CHARGE = 20D;
+
 }
