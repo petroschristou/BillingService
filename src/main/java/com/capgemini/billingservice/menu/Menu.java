@@ -78,7 +78,4 @@ public class Menu {
         return serviceCharges;
     }
 
-
-
-
 }

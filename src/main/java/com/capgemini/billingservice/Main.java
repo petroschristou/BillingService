@@ -29,7 +29,6 @@ public class Main {
             System.out.println("Total: £" + DECIMAL_FORMATTER.format(total));
             Double serviceCharges = menu.calculateServiceCharges(purchases);
             System.out.println("Service Charges: £" + DECIMAL_FORMATTER.format(serviceCharges));
-
         } catch (MenuItemNotFoundException e){
             System.err.println("Unable to calculate purchase total, reason: " + e.getMessage());
         }

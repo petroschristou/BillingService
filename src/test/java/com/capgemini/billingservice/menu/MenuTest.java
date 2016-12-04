@@ -67,5 +67,4 @@ public class MenuTest {
         Assert.assertEquals(serviceCharges, 0.65D);
     }
 
-
 }
