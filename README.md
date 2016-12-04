@@ -11,11 +11,17 @@ C:\BillingService\target>java -jar billing-service-1.0-SNAPSHOT.jar
 When prompted, you enter your menu selection separated by a space.
 
 Welcome to Cafe X Menu
+
 1 : Cola
+
 2 : Coffee
+
 3 : Cheese Sandwich
+
 4 : Steak Sandwich
+
 Please select which item number you wish to purchase from the menu separated by a space:
+
 1 3 4
 
 So selection here was items 1, 3 and 4.
