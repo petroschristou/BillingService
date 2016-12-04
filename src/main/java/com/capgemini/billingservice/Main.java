@@ -1,10 +1,14 @@
 package com.capgemini.billingservice;
 
+import com.capgemini.billingservice.exception.MenuItemNotFoundException;
 import com.capgemini.billingservice.menu.Menu;
+
 import java.util.Scanner;
 
+import static com.capgemini.billingservice.util.MenuUtils.DECIMAL_FORMATTER;
+
 /**
- * Created by Petros Christou on 04/12/16.
+ * Created by Petros Christou on 03/12/16.
  */
 public class Main {
 
@@ -18,6 +22,14 @@ public class Main {
 
         // Read the input delimiting on the spaces
         String[] purchases = scanner.nextLine().split(" ");
+
+        menu.display(purchases);
+        try {
+            Double total = menu.calculateTotalOf(purchases);
+            System.out.println("Total: " + DECIMAL_FORMATTER.format(total));
+        } catch (MenuItemNotFoundException e){
+            System.err.println("Unable to calculate purchase total, reason: " + e.getMessage());
+        }
     }
 
 }

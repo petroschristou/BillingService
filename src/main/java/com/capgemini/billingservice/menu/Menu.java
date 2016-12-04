@@ -1,10 +1,15 @@
 package com.capgemini.billingservice.menu;
 
+import com.capgemini.billingservice.exception.MenuItemNotFoundException;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.capgemini.billingservice.util.MenuUtils.DECIMAL_FORMATTER;
+
 /**
- * Created by Petros Christou on 04/12/16.
+ * Created by Petros Christou on 03/12/16.
  */
 public class Menu {
 
@@ -33,4 +38,30 @@ public class Menu {
         });
         System.out.println("Please select which item number you wish to purchase from the menu separated by a space: ");
     }
+
+    public void display(String[] purchases){
+        // Traverse the map and output the key and it's item
+        Arrays.stream(purchases).forEach((key) -> {
+            MenuItem item = menu.get(key);
+            System.out.println(key + " : " + item.getName() + " £" + DECIMAL_FORMATTER.format(item.getPrice()));
+        });
+    }
+
+    public Double calculateTotalOf(String[] purchases) throws MenuItemNotFoundException {
+        Double total = 0D;
+        // Used traditional for loop here as lamda expressions need final automatic variables and I didn't want to set the total at a class level.
+        for(String purchase : purchases){
+            MenuItem item = menu.get(purchase);
+
+            if(item == null) {
+                throw new MenuItemNotFoundException("Unable to find menu item with key reference: " + purchase);
+            }
+
+            total += item.getPrice();
+        }
+        return total;
+    }
+
+
+
 }
