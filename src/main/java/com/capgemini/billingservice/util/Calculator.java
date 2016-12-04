@@ -23,5 +23,10 @@ public class Calculator {
         return decimal.setScale(decimalPlaces, RoundingMode.HALF_UP);
     }
 
+    public static BigDecimal calculateOverallTotalIncludingServiceChargesToDecimalPlaces(BigDecimal subTotal, BigDecimal serviceCharges, int decimalPlaces){
+        BigDecimal total = subTotal.add(serviceCharges);
+        return total.setScale(decimalPlaces, RoundingMode.HALF_UP);
+    }
+
 
 }

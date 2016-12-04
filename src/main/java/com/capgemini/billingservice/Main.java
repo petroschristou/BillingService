@@ -27,11 +27,14 @@ public class Main {
 
         menu.display(purchases);
         try {
-            Double total = menu.calculateTotalOf(purchases);
-            System.out.println("Total: £" + DECIMAL_FORMATTER.format(total));
+            Double subTotal = menu.calculateTotalOf(purchases);
+            System.out.println("Sub Total: £" + DECIMAL_FORMATTER.format(subTotal));
             Double serviceCharge = menu.calculateServiceCharges(purchases);
-            BigDecimal serviceCharges = Calculator.calculateTotalServiceChargesToDecimalPlaces(total, serviceCharge, 2);
+            BigDecimal serviceCharges = Calculator.calculateTotalServiceChargesToDecimalPlaces(subTotal, serviceCharge, 2);
             System.out.println("Service Charges: £" + serviceCharges);
+            BigDecimal total = Calculator.calculateOverallTotalIncludingServiceChargesToDecimalPlaces(new BigDecimal(subTotal), serviceCharges, 2);
+            System.out.println("Total: £" + total);
+
         } catch (MenuItemNotFoundException e){
             System.err.println("Unable to calculate purchase total, reason: " + e.getMessage());
         }
